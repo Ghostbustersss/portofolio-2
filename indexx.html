@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intania Ainun | Portofolio UI/UX Designer</title>
+  <meta name="description" content="Portofolio Intania Ainun, siswa RPL dan UI/UX Designer.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sky: { 50: '#F3F8FF', 100: '#E4EFFD', 200: '#C9DEFA', 300: '#A9CBF6', 400: '#7FB0EE', 500: '#5B94E0', 600: '#3E78C8', 900: '#1E3557' }
+          },
+          fontFamily: { display: ['Sora', 'sans-serif'], body: ['DM Sans', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-padding-top: 76px; }
+    body { font-family: 'DM Sans', sans-serif; background: #F3F8FF; color: #1E3557; }
+    h1, h2, h3, .font-display { font-family: 'Sora', sans-serif; }
+
+    .card { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 22px 40px -18px rgba(62, 120, 200, .45); border-color: #A9CBF6; }
+
+    .cursor { display: inline-block; width: 3px; height: 1em; background: #5B94E0; margin-left: 4px; vertical-align: -0.12em; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .bar-fill { width: 0; transition: width 1.2s cubic-bezier(.2, .7, .2, 1); }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: #5B94E0; transition: width .25s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    .float { animation: float 5s ease-in-out infinite; }
+    @keyframes float { 50% { transform: translateY(-10px); } }
+
+    a:focus-visible, button:focus-visible { outline: 3px solid #5B94E0; outline-offset: 3px; border-radius: 8px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .float, .cursor { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .card, .bar-fill { transition: none; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <nav class="max-w-6xl mx-auto px-5 h-[68px] flex items-center justify-between" aria-label="Navigasi utama">
+      <a href="#home" class="font-display font-bold text-lg text-sky-900">Intania<span class="text-sky-500">.</span></a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <li><a href="#home" class="nav-link text-sky-900">Home</a></li>
+        <li><a href="#about" class="nav-link text-sky-900">About</a></li>
+        <li><a href="#skills" class="nav-link text-sky-900">Skills</a></li>
+        <li><a href="#projects" class="nav-link text-sky-900">Projects</a></li>
+        <li><a href="#contact" class="nav-link text-sky-900">Contact</a></li>
+      </ul>
+      <button id="menuBtn" class="md:hidden w-10 h-10 rounded-xl bg-white border border-sky-200 text-sky-900" aria-label="Buka menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur border-b border-sky-200">
+      <ul class="px-5 py-3 flex flex-col text-sm font-medium">
+        <li><a href="#home" class="block py-3 text-sky-900">Home</a></li>
+        <li><a href="#about" class="block py-3 text-sky-900">About</a></li>
+        <li><a href="#skills" class="block py-3 text-sky-900">Skills</a></li>
+        <li><a href="#projects" class="block py-3 text-sky-900">Projects</a></li>
+        <li><a href="#contact" class="block py-3 text-sky-900">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32">
+      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-sky-200/70 blur-3xl" aria-hidden="true"></div>
+      <div class="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-sky-100 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-14 items-center">
+        <div class="order-2 md:order-1 text-center md:text-left">
+          <p class="inline-block bg-white border border-sky-200 text-sky-600 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+            Halo, saya
+          </p>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-sky-900">Intania Ainun</h1>
+          <p class="mt-5 text-xl sm:text-2xl font-display font-semibold text-sky-500 min-h-[2rem]">
+            <span id="typing"></span><span class="cursor" aria-hidden="true"></span>
+          </p>
+          <p class="mt-5 text-base sm:text-lg text-sky-900/70 max-w-md mx-auto md:mx-0 leading-relaxed">
+            Siswa RPL yang suka merancang antarmuka yang rapi, jelas, dan nyaman dipakai.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+            <a href="#projects" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-7 py-3.5 rounded-2xl shadow-lg shadow-sky-300/60 transition hover:-translate-y-1">Lihat Project</a>
+            <a href="#contact" class="bg-white border border-sky-200 hover:border-sky-400 text-sky-900 font-semibold px-7 py-3.5 rounded-2xl transition hover:-translate-y-1">Hubungi Saya</a>
+          </div>
+        </div>
+
+        <div class="order-1 md:order-2 flex justify-center">
+          <div class="relative float">
+            <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[2.5rem] bg-sky-300/60" aria-hidden="true"></div>
+            <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-[2.5rem] bg-white border border-sky-200 overflow-hidden">
+              <img src="https://api.dicebear.com/10.x/adventurer/svg?backgroundColor=b6e3f4&detailsProbability=98&detailsVariant=&earringsProbability=61&earringsVariant=&eyebrowsVariant=variant11&eyesVariant=variant22&glassesVariant=variant02&glassesProbability=87&hairVariant=long05&seed=hx0635of"
+  alt="avatar" />
+
+
+            </div>
+            <div class="absolute -bottom-5 -left-5 bg-white border border-sky-200 rounded-2xl px-4 py-3 shadow-lg flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center"><i class="fa-solid fa-pen-ruler"></i></span>
+              <span class="text-sm font-semibold leading-tight">UI Design<br><span class="font-normal text-sky-900/60">sedang dipelajari</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-5 gap-12 items-start">
+        <div class="md:col-span-2 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold">Tentang saya</h2>
+          <div class="mt-4 w-14 h-1.5 rounded-full bg-sky-400"></div>
+        </div>
+        <div class="md:col-span-3 reveal">
+          <p class="text-lg leading-relaxed text-sky-900/80">
+            Saya adalah siswa kelas X RPL yang sedang mempelajari dasar pemrograman web, logika algoritma, dan pembuatan aplikasi digital.
+          </p>
+          <div class="mt-8 grid sm:grid-cols-2 gap-4">
+            <div class="card bg-sky-50 border border-sky-100 rounded-2xl p-5 flex items-center gap-4">
+              <span class="w-12 h-12 rounded-xl bg-white text-sky-500 flex items-center justify-center text-xl"><i class="fa-solid fa-school"></i></span>
+              <div><p class="text-sm text-sky-900/60">Sekolah</p><p class="font-semibold">SMK Ma'arif</p></div>
+            </div>
+            <div class="card bg-sky-50 border border-sky-100 rounded-2xl p-5 flex items-center gap-4">
+              <span class="w-12 h-12 rounded-xl bg-white text-sky-500 flex items-center justify-center text-xl"><i class="fa-solid fa-laptop-code"></i></span>
+              <div><p class="text-sm text-sky-900/60">Kelas dan jurusan</p><p class="font-semibold">X RPL</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-20 md:py-24">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold">Skills</h2>
+          <div class="mt-4 w-14 h-1.5 rounded-full bg-sky-400"></div>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-2 gap-6" id="skillList">
+          <div class="card reveal bg-white border border-sky-100 rounded-3xl p-6" data-level="80">
+            <div class="flex items-center justify-between mb-3"><span class="font-semibold flex items-center gap-3"><i class="fa-brands fa-html5 text-sky-500 text-xl w-6"></i>HTML5</span><span class="text-sm text-sky-600 font-bold">80%</span></div>
+            <div class="h-2.5 rounded-full bg-sky-100"><div class="bar-fill h-full rounded-full bg-sky-400"></div></div>
+          </div>
+          <div class="card reveal bg-white border border-sky-100 rounded-3xl p-6" data-level="75">
+            <div class="flex items-center justify-between mb-3"><span class="font-semibold flex items-center gap-3"><i class="fa-brands fa-css3-alt text-sky-500 text-xl w-6"></i>CSS3</span><span class="text-sm text-sky-600 font-bold">75%</span></div>
+            <div class="h-2.5 rounded-full bg-sky-100"><div class="bar-fill h-full rounded-full bg-sky-400"></div></div>
+          </div>
+          <div class="card reveal bg-white border border-sky-100 rounded-3xl p-6" data-level="50">
+            <div class="flex items-center justify-between mb-3"><span class="font-semibold flex items-center gap-3"><i class="fa-brands fa-js text-sky-500 text-xl w-6"></i>Dasar JavaScript</span><span class="text-sm text-sky-600 font-bold">50%</span></div>
+            <div class="h-2.5 rounded-full bg-sky-100"><div class="bar-fill h-full rounded-full bg-sky-400"></div></div>
+          </div>
+          <div class="card reveal bg-white border border-sky-100 rounded-3xl p-6" data-level="70">
+            <div class="flex items-center justify-between mb-3"><span class="font-semibold flex items-center gap-3"><i class="fa-solid fa-pen-ruler text-sky-500 text-xl w-6"></i>UI Design</span><span class="text-sm text-sky-600 font-bold">70%</span></div>
+            <div class="h-2.5 rounded-full bg-sky-100"><div class="bar-fill h-full rounded-full bg-sky-400"></div></div>
+          </div>
+          <div class="card reveal bg-white border border-sky-100 rounded-3xl p-6 md:col-span-2" data-level="65">
+            <div class="flex items-center justify-between mb-3"><span class="font-semibold flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-sky-500 text-xl w-6"></i>Prompt Engineering</span><span class="text-sm text-sky-600 font-bold">65%</span></div>
+            <div class="h-2.5 rounded-full bg-sky-100"><div class="bar-fill h-full rounded-full bg-sky-400"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-20 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold">Project latihan</h2>
+          <div class="mt-4 w-14 h-1.5 rounded-full bg-sky-400"></div>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <article class="card reveal bg-sky-50 border border-sky-100 rounded-3xl overflow-hidden flex flex-col">
+            <div class="h-48 bg-gradient-to-br from-sky-200 to-sky-100">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=70" alt="Laptop dengan kode program" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-lg font-bold">Website Profil Pribadi</h3>
+              <p class="mt-2 text-sky-900/70 leading-relaxed flex-1">Dibuat menggunakan HTML &amp; Tailwind CSS.</p>
+              <div class="mt-4 flex gap-2 text-xs font-semibold">
+                <span class="bg-white text-sky-600 border border-sky-200 px-3 py-1 rounded-full">HTML</span>
+                <span class="bg-white text-sky-600 border border-sky-200 px-3 py-1 rounded-full">Tailwind CSS</span>
+              </div>
+              <a href="#" class="demo-btn mt-5 inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2.5 rounded-xl transition"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>Demo</a>
+            </div>
+          </article>
+
+          <article class="card reveal bg-sky-50 border border-sky-100 rounded-3xl overflow-hidden flex flex-col">
+            <div class="h-48 bg-gradient-to-br from-sky-200 to-sky-100">
+              <img src="https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?auto=format&fit=crop&w=800&q=70" alt="Kalkulator di atas meja" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-lg font-bold">Kalkulator Web Sederhana</h3>
+              <p class="mt-2 text-sky-900/70 leading-relaxed flex-1">Latihan logika aritmatika dasar.</p>
+              <div class="mt-4 flex gap-2 text-xs font-semibold">
+                <span class="bg-white text-sky-600 border border-sky-200 px-3 py-1 rounded-full">JavaScript</span>
+                <span class="bg-white text-sky-600 border border-sky-200 px-3 py-1 rounded-full">Logika</span>
+              </div>
+              <a href="#" class="demo-btn mt-5 inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2.5 rounded-xl transition"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>Demo</a>
+            </div>
+          </article>
+
+          <article class="card reveal bg-sky-50 border border-sky-100 rounded-3xl overflow-hidden flex flex-col">
+            <div class="h-48 bg-gradient-to-br from-sky-200 to-sky-100">
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=70" alt="Rancangan desain antarmuka" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-lg font-bold">Desain UI Aplikasi Sekolah</h3>
+              <p class="mt-2 text-sky-900/70 leading-relaxed flex-1">Rancangan antarmuka pengguna modern.</p>
+              <div class="mt-4 flex gap-2 text-xs font-semibold">
+                <span class="bg-white text-sky-600 border border-sky-200 px-3 py-1 rounded-full">UI Design</span>
+                <span class="bg-white text-sky-600 border border-sky-200 px-3 py-1 rounded-full">Prototype</span>
+              </div>
+              <a href="#" class="demo-btn mt-5 inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2.5 rounded-xl transition"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>Demo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 md:py-24">
+      <div class="max-w-4xl mx-auto px-5 text-center">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold">Mari terhubung</h2>
+          <div class="mt-4 w-14 h-1.5 rounded-full bg-sky-400 mx-auto"></div>
+          <p class="mt-6 text-sky-900/70 text-lg max-w-xl mx-auto">Punya pertanyaan, saran, atau ingin berkolaborasi? Hubungi saya lewat salah satu kanal di bawah ini.</p>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-3 gap-6">
+          <a href="https://instagram.com/tihnsel" target="_blank" rel="noopener" class="card reveal bg-white border border-sky-100 rounded-3xl p-7 block">
+            <span class="mx-auto w-14 h-14 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-2xl"><i class="fa-brands fa-instagram"></i></span>
+            <p class="mt-4 font-bold">Instagram</p>
+            <p class="text-sm text-sky-900/70 mt-1">@tihnsel</p>
+          </a>
+          <a href="https://github.com/ghostbustersss" target="_blank" rel="noopener" class="card reveal bg-white border border-sky-100 rounded-3xl p-7 block">
+            <span class="mx-auto w-14 h-14 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-2xl"><i class="fa-brands fa-github"></i></span>
+            <p class="mt-4 font-bold">GitHub</p>
+            <p class="text-sm text-sky-900/70 mt-1 break-all">github.com/ghostbustersss</p>
+          </a>
+          <a href="mailto:ainunnurca@gmail.com" class="card reveal bg-white border border-sky-100 rounded-3xl p-7 block">
+            <span class="mx-auto w-14 h-14 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-envelope"></i></span>
+            <p class="mt-4 font-bold">Email</p>
+            <p class="text-sm text-sky-900/70 mt-1 break-all">ainunnurca@gmail.com</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-sky-900 text-sky-100">
+    <div class="max-w-6xl mx-auto px-5 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+      <p>&copy; <span id="year">2026</span> Intania Ainun. Semua hak dilindungi.</p>
+      <a href="#home" class="hover:text-white transition">Kembali ke atas <i class="fa-solid fa-arrow-up ml-1"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Tahun otomatis di footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Efek mengetik pada role
+    (function () {
+      var roles = ['UI/UX Designer', 'Siswa RPL', 'Web Enthusiast'];
+      var el = document.getElementById('typing');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { el.textContent = roles[0]; return; }
+      var r = 0, c = 0, deleting = false;
+      function tick() {
+        var word = roles[r];
+        el.textContent = word.substring(0, c);
+        var delay = deleting ? 55 : 110;
+        if (!deleting && c === word.length) { deleting = true; delay = 1600; }
+        else if (deleting && c === 0) { deleting = false; r = (r + 1) % roles.length; delay = 400; }
+        c += deleting ? -1 : 1;
+        setTimeout(tick, delay);
+      }
+      tick();
+    })();
+
+    // Navbar: gaya saat scroll
+    var navbar = document.getElementById('navbar');
+    function onScroll() {
+      if (window.scrollY > 20) {
+        navbar.classList.add('bg-white/85', 'backdrop-blur-md', 'shadow-sm');
+      } else {
+        navbar.classList.remove('bg-white/85', 'backdrop-blur-md', 'shadow-sm');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Menu mobile
+    var menuBtn = document.getElementById('menuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', function () {
+      var open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', open);
+      menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', false);
+        menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    // Menu aktif sesuai section
+    var links = document.querySelectorAll('.nav-link');
+    var sections = ['home', 'about', 'skills', 'projects', 'contact'].map(function (id) { return document.getElementById(id); });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
+
+    // Reveal saat scroll + animasi progress bar
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('show');
+        var level = e.target.getAttribute('data-level');
+        if (level) e.target.querySelector('.bar-fill').style.width = level + '%';
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // Tombol demo (placeholder sampai link asli tersedia)
+    document.querySelectorAll('.demo-btn').forEach(function (b) {
+      b.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        alert('Link demo belum tersedia. Ganti atribut href tombol ini dengan link project kamu.');
+      });
+    });
+  </script>
+</body>
+</html>
